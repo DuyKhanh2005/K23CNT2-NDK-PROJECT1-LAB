@@ -18,3 +18,8 @@ Route::get('/', function () {
 });
 Route::get('/addmins/ndk-login', [NDK_QuanTri_Controller::class, 'ndkLogin'])->name('admins.ndkLogin');
 Route::post('/addmins/ndk-login', [NDK_QuanTri_Controller::class, 'ndkLoginSubmit'])->name('admins.ndkLoginSubmit');
+
+#Addmin routes
+Route::get('/ndk-admins', function () {
+    return view('ndkAdmins.index');
+});
