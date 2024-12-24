@@ -12,11 +12,11 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('NDK_QUAN_TRI', function (Blueprint $table) {
-            $table->id();
-            $table->string('ndkTaikhoan',250)->unique();
-            $table->string('ndkMatkhau',250);
-            $table->tinyInteger('ndkTrangthai');
-            $table->timestamps();
+            $table->id(); // Tự động thêm cột id với primary key
+            $table->string('ndkTaikhoan',255)->unique(); // Tài khoản, không trùng lặp
+            $table->string('ndkMatkhau',255); // Mật khẩu
+            $table->tinyInteger('ndkTrangthai')->default(0); // Trạng thái
+            $table->timestamps(); // Thêm created_at và updated_at
         });
     }
 
