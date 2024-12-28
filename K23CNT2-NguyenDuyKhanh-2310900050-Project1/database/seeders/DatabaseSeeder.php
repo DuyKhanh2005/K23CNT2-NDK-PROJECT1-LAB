@@ -8,9 +8,13 @@ class DatabaseSeeder extends Seeder
 {
     public function run()
 {
-    $this->call(NDK_LOAI_SAN_PHAMTableSeeder::class);
-    $this->call(NDK_SAN_PHAMTableSeeder::class);
-    $this->call(NDK_QUAN_TRI::class);
+    $this->call([
+        // ndk_quantriSeeder::class,
+        // ndk_loai_san_phamSeeder::class,
+        NDK_SAN_PHAMtableSeeder::class,
+        ndk_hoa_don::class,
+        ndk_ct_hoa_don::class,
+    ]);
 }
 
 }
