@@ -1,4 +1,3 @@
-
 <?php
 
 use Illuminate\Database\Migrations\Migration;
@@ -16,9 +15,9 @@ return new class extends Migration
             $table->id();
             $table->string('ndkMaKhachHang',255)->unique();
             $table->string('ndkHoTenKhachHang',255);
-            $table->string('ndkEmail',255);
+            $table->string('ndkEmail',255)->unique();
             $table->string('ndkMatKhau',255);
-            $table->string('ndkDienThoai',255);
+            $table->string('ndkDienThoai',255)->unique();
             $table->string('ndkDiaChi',255);
             $table->date('ndkNgayDangKy');
             $table->tinyInteger('ndkTrangThai');

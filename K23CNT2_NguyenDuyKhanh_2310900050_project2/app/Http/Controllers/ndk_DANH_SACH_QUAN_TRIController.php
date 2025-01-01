@@ -6,6 +6,7 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Models\ndk_SAN_PHAM; 
 use App\Models\ndk_KHACH_HANG; 
+use App\Models\ndk_TIN_TUC; 
 class ndk_DANH_SACH_QUAN_TRIController extends Controller
 {
     //
@@ -17,10 +18,11 @@ class ndk_DANH_SACH_QUAN_TRIController extends Controller
         
             // Truy vấn số lượng người dùng
             $userCount = ndk_KHACH_HANG::count();
+            $ttCount = ndk_TIN_TUC::count();
 
         
             // Trả về view và truyền cả productCount và userCount
-            return view('ndkAdmins.ndkdanhsachquantri.ndkdanhmuc', compact('productCount', 'userCount'));
+            return view('ndkAdmins.ndkdanhsachquantri.ndkdanhmuc', compact('productCount', 'userCount','ttCount'));
         }
 
         public function nguoidung()
@@ -37,13 +39,24 @@ class ndk_DANH_SACH_QUAN_TRIController extends Controller
         }
         
 
-    // tin tức
-    public function tintuc()
-    {
+        public function tintuc()
+        {
+            // Retrieve all news articles from the database (assuming you have a model named ndk_TIN_TUC)
+            $ndktintucs = ndk_TIN_TUC::all();  // Fetching all articles
         
-        $ndksanphams = ndk_SAN_PHAM::all();
-        return view('ndkAdmins.ndkdanhsachquantri.ndkdanhmuc.ndktintuc',['ndksanphams'=>$ndksanphams]);
-    }
+            // Loop through articles and add the full URL to the image
+            foreach ($ndktintucs as $article) {
+                // Assuming ndkHinhAnh stores the image name, we'll prepend the 'public/storage' path
+                $article->image_url = asset('storage/' . $article->ndkHinhAnh);
+            }
+        
+            // Return the view and pass the articles to it
+            return view('ndkAdmins.ndkdanhsachquantri.ndkdanhmuc.ndktintuc', [
+                'ndktintucs' => $ndktintucs, // Passing the news articles to the view
+            ]);
+        }
+        
+    
 
     // Hiển thị danh sách sản phẩm
     public function sanpham()

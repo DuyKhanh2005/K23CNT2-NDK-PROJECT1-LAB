@@ -34,7 +34,7 @@
                     @php
                         $stt = 0;
                     @endphp
-                    @forelse ($ndkhoadon as $item)
+                    @forelse ($ndkhoadons as $item)
                         @php
                             $stt++;
                         @endphp

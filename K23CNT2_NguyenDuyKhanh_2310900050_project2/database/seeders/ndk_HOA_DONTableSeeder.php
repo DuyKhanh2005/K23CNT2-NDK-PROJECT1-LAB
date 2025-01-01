@@ -2,80 +2,35 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Faker\Factory as Faker;
+
 class ndk_HOA_DONTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
+     *
+     * @return void
      */
-    public function run(): void
+    public function run()
     {
-        //
-        DB::table('ndk_HOA_DON')->insert([
-            'ndkMaHoaDon'=>'HD001',
-            'ndkMaKhachHang'=>1,
-            'ndkNgayHoaDon'=>'2024/12/12',
-            'ndkNgayNhan'=>'2024/12/12',
-            'ndkHoTenKhachHang'=>'Vũ Tiến Đức',
-            'ndkEmail'=>'vuducc@gmail.com',
-            'ndkDienThoai'=>'012550036',
-            'ndkDiaChi'=>'Yên Bái-Yên Bình',
-            'ndkTongGiaTri'=>'790000',
-            'ndkTrangThai'=>2,
-        ]);
+        $faker = Faker::create(); // Khởi tạo Faker
 
-        DB::table('ndk_HOA_DON')->insert([
-            'ndkMaHoaDon'=>'HD002',
-            'ndkMaKhachHang'=>2,
-            'ndkNgayHoaDon'=>'2024/12/20',
-            'ndkNgayNhan'=>'2024/12/21',
-            'ndkHoTenKhachHang'=>'Trần Tuấn Hưng',
-            'ndkEmail'=>'hungtran@gmail.com',
-            'ndkDienThoai'=>'012588868',
-            'ndkDiaChi'=>'Phú Thọ',
-            'ndkTongGiaTri'=>'125000',
-            'ndkTrangThai'=>0,
-        ]);
-
-        DB::table('ndk_HOA_DON')->insert([
-            'ndkMaHoaDon'=>'HD003',
-            'ndkMaKhachHang'=>3,
-            'ndkNgayHoaDon'=>'2024/12/17',
-            'ndkNgayNhan'=>'2024/12/17',
-            'ndkHoTenKhachHang'=>'Phan Quang Minh',
-            'ndkEmail'=>'pminh@gmail.com',
-            'ndkDienThoai'=>'0382550508',
-            'ndkDiaChi'=>'Phú Thọ',
-            'ndkTongGiaTri'=>'999000',
-            'ndkTrangThai'=>1,
-        ]);
-
-        DB::table('ndk_HOA_DON')->insert([
-            'ndkMaHoaDon'=>'HD004',
-            'ndkMaKhachHang'=>1,
-            'ndkNgayHoaDon'=>'2024/12/12',
-            'ndkNgayNhan'=>'2024/12/12',
-            'ndkHoTenKhachHang'=>'Vũ Tiến Đức',
-            'ndkEmail'=>'vuducc@gmail.com',
-            'ndkDienThoai'=>'012550036',
-            'ndkDiaChi'=>'Yên Bái-Yên Bình',
-            'ndkTongGiaTri'=>'660000',
-            'ndkTrangThai'=>1,
-        ]);
-
-        DB::table('ndk_HOA_DON')->insert([
-            'ndkMaHoaDon'=>'HD005',
-            'ndkMaKhachHang'=>4,
-            'ndkNgayHoaDon'=>'2024/12/03',
-            'ndkNgayNhan'=>'2024/12/04',
-            'ndkHoTenKhachHang'=>'Phạm Tùng Quân',
-            'ndkEmail'=>'quanpham@gmail.com',
-            'ndkDienThoai'=>'094357152',
-            'ndkDiaChi'=>'Hà Nội',
-            'ndkTongGiaTri'=>'777999',
-            'ndkTrangThai'=>1,
-        ]);
+        // Tạo ra 10 hóa đơn ngẫu nhiên
+        for ($i = 0; $i < 10; $i++) {
+            DB::table('ndk_HOA_DON')->insert([
+                'ndkMaHoaDon' => 'HD' . str_pad($i + 1, 3, '0', STR_PAD_LEFT), // Tạo mã hóa đơn
+                'ndkMaKhachHang' => $faker->numberBetween(1, 10), // Khách hàng ngẫu nhiên từ 1 đến 10
+                'ndkNgayHoaDon' => $faker->date($format = 'Y/m/d', $max = 'now'), // Ngày hóa đơn
+                'ndkNgayNhan' => $faker->date($format = 'Y/m/d', $max = 'now'), // Ngày nhận hàng
+                'ndkHoTenKhachHang' => $faker->name, // Tên khách hàng ngẫu nhiên
+                'ndkEmail' => $faker->safeEmail, // Email ngẫu nhiên
+                'ndkDienThoai' => $faker->phoneNumber, // Số điện thoại ngẫu nhiên
+                'ndkDiaChi' => $faker->address, // Địa chỉ ngẫu nhiên
+                'ndkTongGiaTri' => $faker->numberBetween(100000, 1000000), // Tổng giá trị ngẫu nhiên
+                'ndkTrangThai' => $faker->numberBetween(0, 2), // Trạng thái hóa đơn ngẫu nhiên (0, 1, 2)
+            ]);
+        }
     }
 }

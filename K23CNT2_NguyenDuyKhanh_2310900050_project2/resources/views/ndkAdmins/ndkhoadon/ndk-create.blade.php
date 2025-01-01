@@ -1,89 +1,69 @@
 @extends('_layouts.admins._master')
-@section('title','Create Hóa Đơn')
+@section('title','Create  Sản Phẩm')
     
 @section('content-body')
     <div class="container border">
         <div class="row">
             <div class="col">
-                <form action="{{route('ndkadmin.ndkhoadon.ndkCreateSubmit')}}" method="POST">
+                <form action="{{ route('ndkadmin.ndksanpham.ndkCreateSubmit') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="card">
                         <div class="card-header">
-                            <h1>Thêm Mới Hóa Đơn</h1>
+                            <h1>Thêm Mới sản phẩm</h1>
                         </div>
                         <div class="card-body">
                             <div class="mb-3">
-                                <label for="ndkMaHoaDon" class="form-label">Mã Hóa Đơn</label>
-                                <input type="text" class="form-control" id="ndkMaHoaDon" name="ndkMaHoaDon" value="{{ old('ndkMaHoaDon') }}" >
-                                @error('ndkMaHoaDon')
+                                <label for="ndkMaSanPham" class="form-label">Mã sản phẩm</label>
+                                <input type="text" class="form-control" id="ndkMaSanPham" name="ndkMaSanPham" value="{{ old('ndkMaSanPham') }}">
+                                @error('ndkMaSanPham')
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
                             </div>
 
                             <div class="mb-3">
-                                <label for="ndkMaKhachHang" class="form-label">Khách Hàng</label>
-                                <select name="ndkMaKhachHang" id="ndkMaKhachHang" class="form-control">
-                                    @foreach ($ndkkhachhang as $item)
-                                        <option value="{{ $item->id }}">{{ $item->ndkHoTenKhachHang }}</option>
-                                    @endforeach
+                                <label for="ndkTenSanPham" class="form-label">Tên sản phẩm</label>
+                                <input type="text" class="form-control" id="ndkTenSanPham" name="ndkTenSanPham" value="{{ old('ndkTenSanPham') }}">
+                                @error('ndkTenSanPham')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label for="ndkHinhAnh" class="form-label">Hình Ảnh</label>
+                                <input type="file" class="form-control" id="ndkHinhAnh" name="ndkHinhAnh" accept="image/*">
+                                @error('ndkHinhAnh')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="ndkSoLuong" class="form-label">Số Lượng</label>
+                                <input type="number" class="form-control" id="ndkSoLuong" name="ndkSoLuong" value="{{ old('ndkSoLuong') }}">
+                                @error('ndkSoLuong')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="ndkDonGia" class="form-label">Đơn Giá</label>
+                                <input type="number" class="form-control" id="ndkDonGia" name="ndkDonGia" value="{{ old('ndkDonGia') }}">
+                                @error('ndkDonGia')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="ndkMaLoai" class="form-label">Loại Danh Muc</label>
+                                <select name="ndkMaLoai" id="ndkMaLoai" class="form-control">
+                                    @forelse ($ndkloaisanpham as $item)
+                                        <option value="{{ $item->id }}" {{ old('ndkMaLoai') == $item->id ? 'selected' : '' }}>
+                                            {{ $item->ndkTenLoai }}
+                                        </option>
+                                    @empty
+                                        <option value="">Không có loại sản phẩm</option>
+                                    @endforelse
                                 </select>
-                                @error('ndkMaKhachHang')
-                                    <span class="text-danger">{{ $message }}</span>
-                                @enderror
-                            </div>
-
-                            <div class="mb-3">
-                                <label for="ndkNgayHoaDon" class="form-label">Ngày Hóa Đơn</label>
-                                <input type="date" class="form-control" id="ndkNgayHoaDon" name="ndkNgayHoaDon" value="{{ old('ndkNgayHoaDon') }}" >
-                                @error('ndkNgayHoaDon')
-                                    <span class="text-danger">{{ $message }}</span>
-                                @enderror
-                            </div>
-
-                            <div class="mb-3">
-                                <label for="ndkNgayNhan" class="form-label">Ngày Nhận</label>
-                                <input type="date" class="form-control" id="ndkNgayNhan" name="ndkNgayNhan" value="{{ old('ndkNgayNhan') }}" >
-                                @error('ndkNgayNhan')
-                                    <span class="text-danger">{{ $message }}</span>
-                                @enderror
-                            </div>
-
-                            <div class="mb-3">
-                                <label for="ndkHoTenKhachHang" class="form-label">Họ Tên Khách Hàng</label>
-                                <input type="text" class="form-control" id="ndkHoTenKhachHang" name="ndkHoTenKhachHang" value="{{ old('ndkHoTenKhachHang') }}" >
-                                @error('ndkHoTenKhachHang')
-                                    <span class="text-danger">{{ $message }}</span>
-                                @enderror
-                            </div>
-
-                            <div class="mb-3">
-                                <label for="ndkEmail" class="form-label">Email</label>
-                                <input type="Email" class="form-control" id="ndkEmail" name="ndkEmail" value="{{ old('ndkEmail') }}" >
-                                @error('ndkEmail')
-                                    <span class="text-danger">{{ $message }}</span>
-                                @enderror
-                            </div>
-
-                            <div class="mb-3">
-                                <label for="ndkDienThoai" class="form-label">Điện Thoại</label>
-                                <input type="tel" class="form-control" id="ndkDienThoai" name="ndkDienThoai" value="{{ old('ndkDienThoai') }}" >
-                                @error('ndkDienThoai')
-                                    <span class="text-danger">{{ $message }}</span>
-                                @enderror
-                            </div>
-
-                            <div class="mb-3">
-                                <label for="ndkDiaChi" class="form-label">Địa Chỉ</label>
-                                <input type="text" class="form-control" id="ndkDiaChi" name="ndkDiaChi" value="{{ old('ndkDiaChi') }}" >
-                                @error('ndkDiaChi')
-                                    <span class="text-danger">{{ $message }}</span>
-                                @enderror
-                            </div>
-
-                            <div class="mb-3">
-                                <label for="ndkTongGiaTri" class="form-label">Tổng Giá Trị</label>
-                                <input type="number" class="form-control" id="ndkTongGiaTri" name="ndkTongGiaTri" value="{{ old('ndkTongGiaTri') }}" >
-                                @error('ndkTongGiaTri')
+                                @error('ndkMaLoai')
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
                             </div>
@@ -91,14 +71,11 @@
                             <div class="mb-3">
                                 <label for="ndkTrangThai" class="form-label">Trạng Thái</label>
                                 <div class="col-sm-10">
-                                    <input type="radio" id="ndkTrangThai0" name="ndkTrangThai" value="0" checked/>
-                                    <label for="ndkTrangThai1">Chờ Sử Lý</label>
+                                    <input type="radio" id="ndkTrangThai1" name="ndkTrangThai" value="0" {{ old('ndkTrangThai') == '0' ? 'checked' : '' }} />
+                                    <label for="ndkTrangThai1"> Hiển Thị</label>
                                     &nbsp;
-                                    <input type="radio" id="ndkTrangThai1" name="ndkTrangThai" value="1"/>
-                                    <label for="ndkTrangThai0">Đang Sử Lý</label>
-                                    &nbsp;
-                                    <input type="radio" id="ndkTrangThai2" name="ndkTrangThai" value="2"/>
-                                    <label for="ndkTrangThai0">Đã hoàn Thành</label>
+                                    <input type="radio" id="ndkTrangThai0" name="ndkTrangThai" value="1" {{ old('ndkTrangThai') == '1' ? 'checked' : '' }} />
+                                    <label for="ndkTrangThai0">Khóa</label>
                                 </div>
                                 @error('ndkTrangThai')
                                     <span class="text-danger">{{ $message }}</span>
@@ -107,7 +84,7 @@
                         </div>
                         <div class="card-footer">
                             <button class="btn btn-success">Create</button>
-                            <a href="{{route('ndkadmins.ndkhoadon')}}" class="btn btn-primary"> Back</a>
+                            <a href="{{ route('ndkadims.ndksanpham') }}" class="btn btn-primary"> Back</a>
                         </div>
                     </div>
                 </form>

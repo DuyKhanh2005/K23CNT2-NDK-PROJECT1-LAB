@@ -14,15 +14,12 @@ return new class extends Migration
         Schema::create('ndk_SAN_PHAM', function (Blueprint $table) {
             $table->id();
             $table->string('ndkMaSanPham', 255)->unique();
-            $table->string('ndkTenSanPham', 255);
-            $table->string('ndkHinhAnh', 255);
+            $table->string('ndkTenSanPham', 255)->index(); // Thêm chỉ mục
+            $table->string('ndkHinhAnh', 500);
             $table->integer('ndkSoLuong');
-            $table->float('ndkDonGia');
-            
-            // Khóa ngoại ndkMaLoai
+            $table->decimal('ndkDonGia', 10, 2); // Sử dụng decimal cho độ chính xác cao
             $table->bigInteger('ndkMaLoai')->unsigned();
             $table->foreign('ndkMaLoai')->references('id')->on('ndk_LOAI_SAN_PHAM')->onDelete('cascade');
-            
             $table->tinyInteger('ndkTrangThai');
             $table->timestamps();
         });
@@ -33,6 +30,10 @@ return new class extends Migration
      */
     public function down(): void
     {
+        Schema::table('ndk_SAN_PHAM', function (Blueprint $table) {
+            $table->dropForeign(['ndkMaLoai']);
+        });
+
         Schema::dropIfExists('ndk_SAN_PHAM');
     }
 };

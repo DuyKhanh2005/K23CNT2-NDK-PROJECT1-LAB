@@ -9,8 +9,28 @@ class ndk_SAN_PHAM extends Model
 {
     use HasFactory;
 
+    // Tên bảng trong cơ sở dữ liệu
+   
     protected $table = 'ndk_SAN_PHAM';
     protected $primaryKey = 'id';
-    public $incrementing = false; // Nếu ndknhacc không phải là auto-increment
-    public $timestamps = true; // Đảm bảo là 'true' nếu bạn sử dụng timestamps
+    public $timestamps = true;
+
+    
+    // Các trường có thể được gán hàng loạt
+    protected $fillable = [
+        'ndkMaSanPham',
+        'ndkTenSanPham',
+        'ndkHinhAnh',
+        'ndkSoLuong',
+        'ndkDonGia',
+        'ndkMaLoai',
+        'ndkMoTa',
+        'ndkTrangThai',
+    ];
+    public function chiTietHoaDon()
+    {
+        return $this->hasMany(ndk_CT_HOA_DON::class, 'ndkSanPhamID','id');
+    }
+   
+
 }

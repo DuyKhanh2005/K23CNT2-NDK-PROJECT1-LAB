@@ -2,9 +2,10 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Faker\Factory as Faker;
+
 class ndk_KHACH_HANGTableSeeder extends Seeder
 {
     /**
@@ -12,49 +13,20 @@ class ndk_KHACH_HANGTableSeeder extends Seeder
      */
     public function run(): void
     {
-        //
-        DB::table('ndk_KHACH_HANG')->insert([
-            'ndkMaKhachHang'=>'KH001',
-            'ndkHoTenKhachHang'=>'Vũ Tiến Đức',
-            'ndkEmail'=>'vuducc@gmail.com',
-            'ndkMatKhau'=>'123456a@',
-            'ndkDienThoai'=>'012550036',
-            'ndkDiaChi'=>'Yên Bái-Yên Bình',
-            'ndkNgayDangKy'=>'2024/12/12',
-            'ndkTrangThai'=>0,
-        ]);
+        $faker = Faker::create(); // Khởi tạo Faker
 
-        DB::table('ndk_KHACH_HANG')->insert([
-            'ndkMaKhachHang'=>'KH002',
-            'ndkHoTenKhachHang'=>'Trần Tuấn Hưng',
-            'ndkEmail'=>'hungtran@gmail.com',
-            'ndkMatKhau'=>'hungyb123',
-            'ndkDienThoai'=>'012588868',
-            'ndkDiaChi'=>'Phú Thọ',
-            'ndkNgayDangKy'=>'2024/12/20',
-            'ndkTrangThai'=>0,
-        ]);
-
-        DB::table('ndk_KHACH_HANG')->insert([
-            'ndkMaKhachHang'=>'KH003',
-            'ndkHoTenKhachHang'=>'Phan Quang Minh',
-            'ndkEmail'=>'pminh@gmail.com',
-            'ndkMatKhau'=>'pminh3366',
-            'ndkDienThoai'=>'0382550508',
-            'ndkDiaChi'=>'Phú Thọ',
-            'ndkNgayDangKy'=>'2024/12/17',
-            'ndkTrangThai'=>2,
-        ]);
-
-        DB::table('ndk_KHACH_HANG')->insert([
-            'ndkMaKhachHang'=>'KH004',
-            'ndkHoTenKhachHang'=>'Phạm Tùng Quân',
-            'ndkEmail'=>'quanpham@gmail.com',
-            'ndkMatKhau'=>'quanpham98',
-            'ndkDienThoai'=>'094357152',
-            'ndkDiaChi'=>'Hà Nội',
-            'ndkNgayDangKy'=>'2024/12/03',
-            'ndkTrangThai'=>0,
-        ]);
+        // Tạo 10 khách hàng ngẫu nhiên
+        foreach (range(1, 10) as $index) {
+            DB::table('ndk_KHACH_HANG')->insert([
+                'ndkMaKhachHang' => 'KH' . str_pad($index, 3, '0', STR_PAD_LEFT),
+                'ndkHoTenKhachHang' => $faker->name, // Tên khách hàng
+                'ndkEmail' => $faker->email, // Email ngẫu nhiên
+                'ndkMatKhau' => bcrypt('123456a@'), // Mật khẩu mặc định
+                'ndkDienThoai' => $faker->phoneNumber, // Số điện thoại ngẫu nhiên
+                'ndkDiaChi' => $faker->address, // Địa chỉ ngẫu nhiên
+                'ndkNgayDangKy' => $faker->date('Y-m-d', 'now'), // Ngày đăng ký ngẫu nhiên
+                'ndkTrangThai' => rand(0, 2), // Trạng thái ngẫu nhiên (0, 1, hoặc 2)
+            ]);
+        }
     }
 }

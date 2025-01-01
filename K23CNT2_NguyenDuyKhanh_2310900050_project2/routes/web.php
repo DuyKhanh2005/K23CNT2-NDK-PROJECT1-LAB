@@ -7,6 +7,9 @@ use App\Http\Controllers\ndk_KHACH_HANGcontroller;
 use App\Http\Controllers\ndk_DANH_SACH_QUAN_TRIController;
 use App\Http\Controllers\ndk_HOA_DONController;
 use App\Http\Controllers\ndk_CT_HOA_DONController;
+use App\Http\Controllers\ndk_TIN_TUCController;
+use App\Http\Controllers\ndk_LOGIN_USERController;
+use App\Http\Controllers\ndk_SIGNUPController;
 
 /*
 |--------------------------------------------------------------------------
@@ -56,7 +59,8 @@ Route::get('/ndk-admins/ndk-loai-san-pham/ndk-detail/{id}',[ndk_LOAI_SAN_PHAMCon
 Route::get('/ndk-admins/ndk-loai-san-pham/ndk-delete/{id}',[ndk_LOAI_SAN_PHAMController::class,'ndkDelete'])->name('ndkadmin.ndkloaisanpham.ndkDelete');
 
 // san pham--------------------------------------------------------------------------------------------------------------------------------------
-
+// search
+Route::get('/ndk-admins/ndk-san-pham/search', [ndk_SAN_PHAMController::class, 'searchAdmins'])->name('ndkuser.searchAdmins');
 // list
 
 Route::get('/ndk-admins/ndk-san-pham',[ndk_SAN_PHAMController::class,'ndkList'])->name('ndkadims.ndksanpham');
@@ -76,19 +80,23 @@ Route::get('/ndk-admins/ndk-san-pham/ndk-delete/{id}', [ndk_SAN_PHAMController::
 
 
 // khach hang--------------------------------------------------------------------------------------------------------------------------------------
-// list
-Route::get('/ndk-admins/ndk-khach-hang',[ndk_KHACH_HANGcontroller::class,'ndkList'])->name('ndkadmins.ndkkhachhang');
-//detail
+// List
+Route::get('/ndk-admins/ndk-khach-hang', [ndk_KHACH_HANGcontroller::class, 'ndkList'])->name('ndkadmins.ndkkhachhang');
+
+// Detail
 Route::get('/ndk-admins/ndk-khach-hang/ndk-detail/{id}', [ndk_KHACH_HANGcontroller::class, 'ndkDetail'])->name('ndkadmin.ndkkhachhang.ndkDetail');
-//create
-Route::get('/ndk-admins/ndk-khach-hang/ndk-create',[ndk_KHACH_HANGcontroller::class,'ndkCreate'])->name('ndkadmin.ndkkhachhang.ndkcreate');
-Route::post('/ndk-admins/ndk-khach-hang/ndk-create',[ndk_KHACH_HANGcontroller::class,'ndkCreateSubmit'])->name('ndkadmin.ndkkhachhang.ndkCreateSubmit');
-//edit
+
+// Create
+Route::get('/ndk-admins/ndk-khach-hang/ndk-create', [ndk_KHACH_HANGcontroller::class, 'ndkCreate'])->name('ndkadmin.ndkkhachhang.ndkcreate');
+Route::post('/ndk-admins/ndk-khach-hang/ndk-create', [ndk_KHACH_HANGcontroller::class, 'ndkCreateSubmit'])->name('ndkadmin.ndkkhachhang.ndkCreateSubmit');
+
+// Edit
 Route::get('/ndk-admins/ndk-khach-hang/ndk-edit/{id}', [ndk_KHACH_HANGcontroller::class, 'ndkEdit'])->name('ndkadmin.ndkkhachhang.ndkedit');
 Route::post('/ndk-admins/ndk-khach-hang/ndk-edit/{id}', [ndk_KHACH_HANGcontroller::class, 'ndkEditSubmit'])->name('ndkadmin.ndkkhachhang.ndkEditSubmit');
-//delete
-// Đảm bảo sử dụng phương thức POST để gọi route xóa sản phẩm
-Route::get('/ndk-admins/ndk-khach-hang/ndk-delete/{id}', [ndk_KHACH_HANGcontroller::class, 'ndkDelete'])->name('ndkadmin.ndkkhachhang.ndkdelete');
+
+// Delete (Sử dụng POST hoặc DELETE)
+Route::post('/ndk-admins/ndk-khach-hang/ndk-delete/{id}', [ndk_KHACH_HANGcontroller::class, 'ndkDelete'])->name('ndkadmin.ndkkhachhang.ndkdelete');
+
 
 // Hóa Đơn--------------------------------------------------------------------------------------------------------------------------------------
 // list
@@ -136,3 +144,92 @@ Route::post('/ndk-admins/ndk-quan-tri/ndk-edit/{id}', [ndk_QUAN_TRIController::c
 //delete
 // Đảm bảo sử dụng phương thức POST để gọi route xóa sản phẩm
 Route::get('/ndk-admins/ndk-quan-tri/ndk-delete/{id}', [ndk_QUAN_TRIController::class, 'ndkDelete'])->name('ndkadmin.ndkquantri.ndkdelete');
+
+// Tin Tức--------------------------------------------------------------------------------------------------------------------------------------
+// list
+Route::get('/ndk-admins/ndk-tin-tuc',[ndk_TIN_TUCController::class,'ndkList'])->name('ndkadmins.ndktintuc');
+//detail
+Route::get('/ndk-admins/ndk-tin-tuc/ndk-detail/{id}', [ndk_TIN_TUCController::class, 'ndkDetail'])->name('ndkadmin.ndktintuc.ndkDetail');
+//create
+Route::get('/ndk-admins/ndk-tin-tuc/ndk-create',[ndk_TIN_TUCController::class,'ndkCreate'])->name('ndkadmin.ndktintuc.ndkcreate');
+Route::post('/ndk-admins/ndk-tin-tuc/ndk-create',[ndk_TIN_TUCController::class,'ndkCreateSubmit'])->name('ndkadmin.ndktintuc.ndkCreateSubmit');
+//edit
+Route::get('/ndk-admins/ndk-tin-tuc/ndk-edit/{id}', [ndk_TIN_TUCController::class, 'ndkEdit'])->name('ndkadmin.ndktintuc.ndkedit');
+Route::post('/ndk-admins/ndk-tin-tuc/ndk-edit/{id}', [ndk_TIN_TUCController::class, 'ndkEditSubmit'])->name('ndkadmin.ndktintuc.ndkEditSubmit');
+//delete
+// Đảm bảo sử dụng phương thức POST để gọi route xóa sản phẩm
+Route::get('/ndk-admins/ndk-tin-tuc/ndk-delete/{id}', [ndk_TIN_TUCController::class, 'ndkDelete'])->name('ndkadmin.ndktintuc.ndkdelete');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+use App\Http\Controllers\HomeController;
+
+// User - Routes
+Route::get('/ndk-user', [HomeController::class, 'index'])->name('ndkuser.home');
+Route::get('/ndk-user1', [HomeController::class, 'index1'])->name('ndkuser.home1');
+// Hiển thị chi tiết sản phẩm
+Route::get('/ndk-user/show/{id}', [HomeController::class, 'show'])->name('ndkuser.show');
+// search
+Route::get('/search', [ndk_SAN_PHAMController::class, 'search'])->name('ndkuser.search');
+Route::get('/search1', [ndk_SAN_PHAMController::class, 'search1'])->name('ndkuser.search1');
+
+Route::get('/ndkuser/login', [ndk_LOGIN_USERController::class, 'ndkLogin'])->name('ndkuser.login');
+Route::post('/ndkuser/login', [ndk_LOGIN_USERController::class, 'ndkLoginSubmit'])->name('ndkuser.ndkLoginSubmit');
+Route::get('/ndkuser/logout', [ndk_LOGIN_USERController::class, 'ndkLogout'])->name('ndkuser.logout');
+
+
+// hỗ trợ 
+route::get('/ndk-user/support',function()
+{
+    return view('ndkuser.support');
+});
+
+// signup
+Route::get('/ndk-user/signup', [ndk_SIGNUPController::class, 'ndksignup'])->name('ndkuser.ndksignup');
+Route::post('/ndk-user/signup', [ndk_SIGNUPController::class, 'ndksignupSubmit'])->name('ndkuser.ndksignupSubmit');
+
+
+
+// Route để hiển thị sản phẩm trong trang thanh toán
+Route::get('/ndk-user/thanhtoan/{product_id}', [ndk_CT_HOA_DONController::class, 'ndkthanhtoan'])->name('ndkuser.ndkthanhtoan');
+
+// Route để xử lý thanh toán
+Route::post('/ndk-user/thanhtoan', [ndk_CT_HOA_DONController::class, 'storeThanhtoan'])->name('ndkuser.storeThanhtoan');
+// create hóa đơn user
+
+
+// tạo bảng hóa đơn
+Route::get('san-pham/{sanPham}', [ndk_CT_HOA_DONController::class, 'show'])->name('sanpham.show');
+Route::post('mua-san-pham/{sanPham}', [ndk_CT_HOA_DONController::class, 'store'])->name('hoadon.store');
+
+// xem bảng Hóa Đơn mới Tạo
+Route::get('hoa-don/{hoaDonId}/san-pham/{sanPhamId}', [ndk_HOA_DONController::class, 'show'])->name('hoadon.show');
+
+
+
+// tạo bảng chi tiết hóa đơn
+
+
+// Route để tạo mới chi tiết hóa đơn
+Route::get('/cthoadon/{hoaDonId}/{sanPhamId}', [ndk_CT_HOA_DONController::class, 'create'])->name('cthoadon.create');
+
+// Route để lưu chi tiết hóa đơn
+Route::post('/cthoadon/store', [ndk_CT_HOA_DONController::class, 'storecthoadon'])->name('cthoadon.storecthoadon');
+
+// Route để hiển thị chi tiết hóa đơn
+Route::get('/hoa-don-id/{hoaDonId}/san-pham-id/{sanPhamId}', [ndk_CT_HOA_DONController::class, 'cthoadonshow'])->name('cthoadon.cthoadonshow');
+
+
+// giỏ hàng
+

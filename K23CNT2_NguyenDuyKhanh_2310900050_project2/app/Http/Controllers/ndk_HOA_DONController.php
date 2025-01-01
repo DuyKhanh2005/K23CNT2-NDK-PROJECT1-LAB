@@ -5,129 +5,137 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\ndk_HOA_DON; 
 use App\Models\ndk_KHACH_HANG; 
+use App\Models\ndk_SAN_PHAM; 
+
 class ndk_HOA_DONController extends Controller
 {
-    //
-      //admin CRUD
-    // list -----------------------------------------------------------------------------------------------------------------------------------------
+    // Hiển thị chi tiết hóa đơn và sản phẩm
+    public function show($hoaDonId, $sanPhamId)
+    {
+        // Lấy hóa đơn và sản phẩm từ ID
+        $hoaDon = ndk_HOA_DON::findOrFail($hoaDonId);
+        $sanPham = ndk_SAN_PHAM::findOrFail($sanPhamId);
+
+        // Trả về view để hiển thị thông tin hóa đơn và sản phẩm
+        return view('ndkuser.hoadonshow', compact('hoaDon', 'sanPham'));
+    }
+
+    // List hóa đơn - Admin CRUD
     public function ndkList()
     {
-        $ndkhoadon = ndk_HOA_DON::all();
-        return view('ndkAdmins.ndkhoadon.ndk-list',['ndkhoadon'=>$ndkhoadon]);
+        // Lấy tất cả hóa đơn
+        $ndkhoadons = ndk_HOA_DON::all();
+        return view('ndkAdmins.ndkhoadon.ndk-list', ['ndkhoadons' => $ndkhoadons]);
     }
-    // detail -----------------------------------------------------------------------------------------------------------------------------------------
+
+    // Hiển thị chi tiết hóa đơn - Admin CRUD
     public function ndkDetail($id)
     {
-        // Tìm sản phẩm theo ID
-        $ndkhoadon = ndk_HOA_DON::where('id', $id)->first();
+        // Tìm hóa đơn theo ID
+        $ndkhoadon = ndk_HOA_DON::findOrFail($id);
 
-        // Trả về view và truyền thông tin sản phẩm
+        // Trả về view và truyền thông tin hóa đơn
         return view('ndkAdmins.ndkhoadon.ndk-detail', ['ndkhoadon' => $ndkhoadon]);
     }
-    // create
+
+    // Tạo mới hóa đơn - Admin CRUD
     public function ndkCreate()
     {
+        // Lấy tất cả khách hàng
         $ndkkhachhang = ndk_KHACH_HANG::all();
-        return view('ndkAdmins.ndkhoadon.ndk-create',['ndkkhachhang'=>$ndkkhachhang]);
+        return view('ndkAdmins.ndkhoadon.ndk-create', ['ndkkhachhang' => $ndkkhachhang]);
     }
-    //post
+
+    // Xử lý khi gửi form tạo mới hóa đơn
     public function ndkCreateSubmit(Request $request)
     {
-        // Xác thực dữ liệu yêu cầu dựa trên các quy tắc xác thực
-        $validate = $request->validate([
+        // Xác thực dữ liệu yêu cầu
+        $validated = $request->validate([
             'ndkMaHoaDon' => 'required|unique:ndk_hoa_don,ndkMaHoaDon',
             'ndkMaKhachHang' => 'required|exists:ndk_khach_hang,id',
-            'ndkNgayHoaDon' => 'required|date',  
+            'ndkNgayHoaDon' => 'required|date',
             'ndkNgayNhan' => 'required|date',
-            'ndkHoTenKhachHang' => 'required|string',  
+            'ndkHoTenKhachHang' => 'required|string',
             'ndkEmail' => 'required|email',
-            'ndkDienThoai' => 'required|numeric',  
-            'ndkDiaChi' => 'required|string',  
-            'ndkTongGiaTri' => 'required|numeric',  // Đã thay đổi thành numeric (cho kiểu double)
+            'ndkDienThoai' => 'required|numeric',
+            'ndkDiaChi' => 'required|string',
+            'ndkTongGiaTri' => 'required|numeric',
             'ndkTrangThai' => 'required|in:0,1,2',
         ]);
-    
-        // Tạo một bản ghi hóa đơn mới
+
+        // Tạo mới hóa đơn
         $ndkhoadon = new ndk_HOA_DON;
-    
-        // Gán dữ liệu xác thực vào các thuộc tính của mô hình
         $ndkhoadon->ndkMaHoaDon = $request->ndkMaHoaDon;
-        $ndkhoadon->ndkMaKhachHang = $request->ndkMaKhachHang;  // Giả sử đây là khóa ngoại
+        $ndkhoadon->ndkMaKhachHang = $request->ndkMaKhachHang;
         $ndkhoadon->ndkHoTenKhachHang = $request->ndkHoTenKhachHang;
         $ndkhoadon->ndkEmail = $request->ndkEmail;
         $ndkhoadon->ndkDienThoai = $request->ndkDienThoai;
         $ndkhoadon->ndkDiaChi = $request->ndkDiaChi;
-        
-        // Lưu 'ndkTongGiaTri' dưới dạng float (hoặc double) để phù hợp với kiểu dữ liệu trong cơ sở dữ liệu
-        $ndkhoadon->ndkTongGiaTri = (double) $request->ndkTongGiaTri; // Chuyển đổi sang double
-        
+        $ndkhoadon->ndkTongGiaTri = (double) $request->ndkTongGiaTri;
         $ndkhoadon->ndkTrangThai = $request->ndkTrangThai;
-    
-        // Đảm bảo định dạng đúng cho các trường ngày
         $ndkhoadon->ndkNgayHoaDon = $request->ndkNgayHoaDon;
         $ndkhoadon->ndkNgayNhan = $request->ndkNgayNhan;
-    
-        // Lưu bản ghi mới vào cơ sở dữ liệu
+
+        // Lưu hóa đơn vào cơ sở dữ liệu
         $ndkhoadon->save();
-    
-        // Chuyển hướng đến danh sách hóa đơn
+
+        // Chuyển hướng về danh sách hóa đơn
         return redirect()->route('ndkadmins.ndkhoadon');
     }
-    
 
-
+    // Sửa hóa đơn - Admin CRUD
     public function ndkEdit($id)
     {
-        $ndkhoadon = ndk_HOA_DON::where('id', $id)->first();
+        // Lấy hóa đơn cần sửa và danh sách khách hàng
+        $ndkhoadon = ndk_HOA_DON::findOrFail($id);
         $ndkkhachhang = ndk_KHACH_HANG::all();
-        return view('ndkAdmins.ndkhoadon.ndk-edit',['ndkkhachhang'=>$ndkkhachhang,'ndkhoadon'=>$ndkhoadon]);
+        return view('ndkAdmins.ndkhoadon.ndk-edit', ['ndkkhachhang' => $ndkkhachhang, 'ndkhoadon' => $ndkhoadon]);
     }
-    //post
-    public function ndkEditSubmit(Request $request,$id)
+
+    // Xử lý khi gửi form sửa hóa đơn
+    public function ndkEditSubmit(Request $request, $id)
     {
-        // Xác thực dữ liệu yêu cầu dựa trên các quy tắc xác thực
-        $validate = $request->validate([
-            'ndkMaHoaDon' => 'required|unique:ndk_hoa_don,ndkMaHoaDon,'. $id,
+        // Xác thực dữ liệu yêu cầu
+        $validated = $request->validate([
+            'ndkMaHoaDon' => 'required|unique:ndk_hoa_don,ndkMaHoaDon,' . $id,
             'ndkMaKhachHang' => 'required|exists:ndk_khach_hang,id',
-            'ndkNgayHoaDon' => 'required|date',  
+            'ndkNgayHoaDon' => 'required|date',
             'ndkNgayNhan' => 'required|date',
-            'ndkHoTenKhachHang' => 'required|string',  
+            'ndkHoTenKhachHang' => 'required|string',
             'ndkEmail' => 'required|email',
-            'ndkDienThoai' => 'required|numeric',  
-            'ndkDiaChi' => 'required|string',  
-            'ndkTongGiaTri' => 'required|numeric', 
+            'ndkDienThoai' => 'required|numeric',
+            'ndkDiaChi' => 'required|string',
+            'ndkTongGiaTri' => 'required|numeric',
             'ndkTrangThai' => 'required|in:0,1,2',
         ]);
-    
-        $ndkhoadon = ndk_HOA_DON::where('id', $id)->first();
-        // Gán dữ liệu xác thực vào các thuộc tính của mô hình
+
+        // Cập nhật hóa đơn
+        $ndkhoadon = ndk_HOA_DON::findOrFail($id);
         $ndkhoadon->ndkMaHoaDon = $request->ndkMaHoaDon;
-        $ndkhoadon->ndkMaKhachHang = $request->ndkMaKhachHang;  // Giả sử đây là khóa ngoại
+        $ndkhoadon->ndkMaKhachHang = $request->ndkMaKhachHang;
         $ndkhoadon->ndkHoTenKhachHang = $request->ndkHoTenKhachHang;
         $ndkhoadon->ndkEmail = $request->ndkEmail;
         $ndkhoadon->ndkDienThoai = $request->ndkDienThoai;
         $ndkhoadon->ndkDiaChi = $request->ndkDiaChi;
-        
-        // Lưu 'ndkTongGiaTri' dưới dạng float (hoặc double) để phù hợp với kiểu dữ liệu trong cơ sở dữ liệu
-        $ndkhoadon->ndkTongGiaTri = (double) $request->ndkTongGiaTri; // Chuyển đổi sang double
-        
+        $ndkhoadon->ndkTongGiaTri = (double) $request->ndkTongGiaTri;
         $ndkhoadon->ndkTrangThai = $request->ndkTrangThai;
-    
-        // Đảm bảo định dạng đúng cho các trường ngày
         $ndkhoadon->ndkNgayHoaDon = $request->ndkNgayHoaDon;
         $ndkhoadon->ndkNgayNhan = $request->ndkNgayNhan;
-    
-        // Lưu bản ghi mới vào cơ sở dữ liệu
+
+        // Lưu cập nhật vào cơ sở dữ liệu
         $ndkhoadon->save();
-    
-        // Chuyển hướng đến danh sách hóa đơn
+
+        // Chuyển hướng về danh sách hóa đơn
         return redirect()->route('ndkadmins.ndkhoadon');
     }
-    
-        //delete
-        public function ndkDelete($id)
-        {
-            ndk_HOA_DON::where('id',$id)->delete();
-            return back()->with('hoadon_deleted','Đã xóa Khách hàng thành công!');
-        }
+
+    // Xóa hóa đơn - Admin CRUD
+    public function ndkDelete($id)
+    {
+        // Xóa hóa đơn theo ID
+        ndk_HOA_DON::where('id', $id)->delete();
+        
+        // Quay lại trang trước và thông báo xóa thành công
+        return back()->with('hoadon_deleted', 'Đã xóa hóa đơn thành công!');
+    }
 }

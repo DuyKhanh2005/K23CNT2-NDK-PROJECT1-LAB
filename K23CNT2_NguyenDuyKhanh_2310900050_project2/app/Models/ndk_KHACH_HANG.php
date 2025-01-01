@@ -1,17 +1,34 @@
 <?php
-
 namespace App\Models;
 
+use Illuminate\Foundation\Auth\User as Authenticatable; // Thêm dòng này
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Hash;
 
-class ndk_KHACH_HANG extends Model
+class ndk_KHACH_HANG extends Authenticatable // Kế thừa từ Authenticatable
 {
     use HasFactory;
+
+
     protected $table = 'ndk_KHACH_HANG';
-    protected $primaryKey = 'id';
-    public $incrementing = false; // Nếu ndknhacc không phải là auto-increment
-    public $timestamps = true; // Đảm bảo là 'true' nếu bạn sử dụng timestamps
-     // Chỉ định các trường ngày tháng sẽ tự động chuyển thành đối tượng Carbon
-     protected $dates = ['ndkNgayDangKy'];
+    protected $primaryKey = 'ndkMaKhachHang'; // Đảm bảo rằng ndkMaKhachHang là khóa chính
+
+    protected $fillable = [
+        'ndkMaKhachHang', 'ndkHoTenKhachHang', 'ndkEmail', 'ndkMatKhau', 
+        'ndkDienThoai', 'ndkDiaChi', 'ndkNgayDangKy', 'ndkTrangThai'
+    ];
+
+    public $incrementing = false; // Nếu ndkMaKhachHang không tự tăng thì bạn cần đặt false
+    public $timestamps = true;
+
+    protected $dates = ['ndkNgayDangKy'];
+
+    public function setndkMatKhauAttribute($value)
+{
+    if (!empty($value)) {
+        $this->attributes['ndkMatKhau'] = Hash::make($value);
+    }
+}
+
+    
 }

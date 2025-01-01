@@ -25,7 +25,6 @@ class DatabaseSeeder extends Seeder
             ndk_KHACH_HANGTableSeeder::class,
             ndk_HOA_DONTableSeeder::class,
             ndk_CT_HOA_DONTableSeeder::class
-
         ]);
         
     }

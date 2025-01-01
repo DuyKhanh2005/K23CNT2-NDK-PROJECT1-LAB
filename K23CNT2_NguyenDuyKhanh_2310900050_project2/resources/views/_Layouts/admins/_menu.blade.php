@@ -41,4 +41,8 @@
         <a href="/ndk-admins/ndk-ct-hoa-don" class="text-decoration-none text-dark">Chi Tiết Hóa Đơn</a>
     </li>
 
+    <li class="list-group-item">
+        <a href="/ndk-admins/ndk-tin-tuc" class="text-decoration-none text-dark">Tin Tức</a>
+    </li>
+
 </ul>
