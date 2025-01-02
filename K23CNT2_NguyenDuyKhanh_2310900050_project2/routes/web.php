@@ -10,6 +10,7 @@ use App\Http\Controllers\ndk_CT_HOA_DONController;
 use App\Http\Controllers\ndk_TIN_TUCController;
 use App\Http\Controllers\ndk_LOGIN_USERController;
 use App\Http\Controllers\ndk_SIGNUPController;
+use App\Http\Controllers\ndk_QUAN_TRIController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,12 +22,17 @@ use App\Http\Controllers\ndk_SIGNUPController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+//HomeController
+Route::get('/ndk-admins', [ndk_QUAN_TRIController::class, 'ndkAdminHome']);
 
 
 // admins login --------------------------------------------------------------------------------------------------------------------------------------
-use App\Http\Controllers\ndk_QUAN_TRIController;
-Route::get('/', [ndk_QUAN_TRIController::class, 'ndkLogin'])->name('admins.ndkLogin');
-Route::post('/', [ndk_QUAN_TRIController::class, 'ndkLoginSubmit'])->name('admins.ndkLoginSubmit');
+
+// Route GET để hiển thị form đăng nhập
+Route::get('/ndk-admins/login', [ndk_QUAN_TRIController::class, 'ndkLogin'])->name('admins.ndkLogin');
+
+// Route POST để xử lý khi gửi form đăng nhập
+Route::post('/ndk-admins/login', [ndk_QUAN_TRIController::class, 'ndkLoginSubmit'])->name('admins.ndkLoginSubmit');
 
 
 #admins - route--------------------------------------------------------------------------------------------------------------------------------------

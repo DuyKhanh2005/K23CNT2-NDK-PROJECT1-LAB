@@ -12,7 +12,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
     <style>
-                /* Nền body với hình ảnh */
+        /* Nền body với hình ảnh */
         body {
             background-size: cover;
             min-height: 100vh;
@@ -118,6 +118,13 @@
         /* Loại bỏ viền của các thẻ a khi ở trạng thái focus */
         a:focus {
             outline: none;
+        }
+
+        /* Thu nhỏ ảnh để vừa khung */
+        .product-img {
+            width: 70%; /* Đảm bảo ảnh chiếm hết chiều rộng của khung */
+            height: auto; /* Tự động điều chỉnh chiều cao dựa trên tỷ lệ của ảnh */
+            object-fit: cover; /* Đảm bảo ảnh được cắt để lấp đầy khung mà không bị kéo dãn */
         }
 
     </style>

@@ -1,37 +1,88 @@
-<!-- resources/views/login.blade.php -->
-
 <!DOCTYPE html>
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Hệ thống đăng nhập</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>Đăng Nhập - Quản Trị</title>
+    <!-- Link tới Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Link tới Font Awesome (cho icon) -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: #f0f8ff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .login-container {
+            background: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 100%;
+        }
+        .login-container h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .form-control {
+            border-radius: 50px;
+        }
+        .btn-primary {
+            background-color: #4CAF50;
+            border: none;
+            border-radius: 50px;
+            padding: 10px 20px;
+            width: 100%;
+        }
+        .btn-primary:hover {
+            background-color: #45a049;
+        }
+        .footer-text {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 0.875rem;
+        }
+    </style>
 </head>
 <body>
-    <div class="container mt-5">
-        <h1 class="text-center">Hệ thống đăng nhập</h1>
-        <form method="POST" action="{{ route('login.submit') }}">
-            @csrf
-            <div class="form-group">
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" class="form-control" required placeholder="Nhập email của bạn">
-            </div>
-            <div class="form-group">
-                <label for="password">Mật khẩu:</label>
-                <input type="password" id="password" name="password" class="form-control" required placeholder="Nhập mật khẩu">
-            </div>
-            <button type="submit" class="btn btn-primary btn-block">Đăng nhập</button>
-        </form>
 
+    <div class="login-container">
+        <h2>Đăng Nhập</h2>
+
+        <!-- Thông báo lỗi -->
         @if ($errors->any())
-            <div class="alert alert-danger mt-3">
+            <div class="alert alert-danger">
                 @foreach ($errors->all() as $error)
                     <p>{{ $error }}</p>
                 @endforeach
             </div>
         @endif
+
+        <!-- Form đăng nhập -->
+        <form action="{{ route('admins.ndkLoginSubmit') }}" method="POST">
+            @csrf
+            <div class="mb-3">
+                <label for="ndkTaiKhoan" class="form-label">Tài Khoản</label>
+                <input type="text" class="form-control" id="ndkTaiKhoan" name="ndkTaiKhoan" placeholder="Nhập tài khoản" required>
+            </div>
+            <div class="mb-3">
+                <label for="ndkMatKhau" class="form-label">Mật Khẩu</label>
+                <input type="password" class="form-control" id="ndkMatKhau" name="ndkMatKhau" placeholder="Nhập mật khẩu" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Đăng Nhập</button>
+        </form>
+
+        <div class="footer-text">
+            <p>© 2025 Quản Trị Hệ Thống</p>
+        </div>
     </div>
+
+    <!-- Script Bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
