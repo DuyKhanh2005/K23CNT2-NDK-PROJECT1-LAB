@@ -14,38 +14,37 @@
     <style>
         /* Nền body với hình ảnh */
         body {
-            background-size: cover;
+            background: linear-gradient(135deg, #f5f7fa, #c3cfe2); /* Gradient mịn màng */
             min-height: 100vh;
-            font-family: Arial, sans-serif;
-            transition: background 0.5s ease; /* Tạo hiệu ứng mượt mà cho background */
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            transition: background 0.5s ease;
         }
 
         /* Kiểu dáng của sidebar */
         .sideBar {
             width: 250px;
-            background: linear-gradient(135deg, #7e2914, #7e2914); /* Nền gradient */
+            background: #1d1f2e; /* Màu nền tối dễ nhìn */
             min-height: 100vh;
             padding-top: 30px;
-            transition: width 0.3s ease, padding 0.3s ease; /* Thêm hiệu ứng mượt mà khi thay đổi kích thước */
+            transition: width 0.3s ease, padding 0.3s ease;
         }
 
         .sideBar a {
-            color: #fff;
+            color: #ddd;
             text-decoration: none;
             padding: 15px;
             display: block;
             font-size: 1.1em;
-            border: none; /* Loại bỏ viền dưới các liên kết */
-            transition: background-color 0.3s ease, transform 0.3s ease, padding 0.3s ease; /* Thêm hiệu ứng khi hover */
+            border: none;
+            transition: background-color 0.3s ease, transform 0.3s ease, padding 0.3s ease;
         }
 
         .sideBar a:hover {
-            background-color: #8d8c8ce8;
+            background-color: #4a6b8c;
             transform: translateX(10px);
-            padding-left: 20px; /* Tăng khoảng cách cho hiệu ứng mượt mà */
+            padding-left: 20px;
         }
 
-        /* Ẩn sidebar trên các màn hình nhỏ */
         @media (max-width: 767px) {
             .sideBar {
                 width: 100%;
@@ -61,40 +60,40 @@
         .wrapper {
             width: calc(100% - 250px);
             min-height: 100vh;
-            background: rgba(255, 255, 255, 0.9);
+            background: rgba(255, 255, 255, 0.95);
             padding: 0;
             transition: all 0.3s ease;
         }
 
         /* Kiểu dáng của header */
         header {
-            background: linear-gradient(135deg,  #7e2914, #be6d6d); /* Gradient matching */
+            background: #161718; /* Màu xanh dịu nhẹ */
             color: white;
             padding: 15px 30px;
             font-size: 1.6em;
             text-align: center;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-            transition: background 0.3s ease; /* Tạo hiệu ứng mượt mà khi thay đổi background */
+            transition: background 0.3s ease;
         }
 
         /* Kiểu dáng của thẻ (Card) */
         .card {
-            border: none; /* Loại bỏ viền của thẻ */
+            border: none;
             margin-bottom: 20px;
             box-shadow: 0 4px 8px rgba(238, 231, 231, 0.1);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             background-color: #fff;
-            overflow: hidden; /* Đảm bảo không bị tràn nội dung */
+            overflow: hidden;
         }
 
         .card:hover {
-            transform: translateY(-10px); /* Dịch chuyển lên khi hover */
-            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15); /* Tăng bóng khi hover */
+            transform: translateY(-10px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
         }
 
         /* Kiểu dáng của footer */
         footer {
-            background-color: #7e2914;
+            background-color: #4a6b8c;
             color: white;
             padding: 10px;
             text-align: center;
@@ -103,16 +102,16 @@
         }
 
         footer:hover {
-            background-color: #7e2914; /* Màu nền đổi khi hover vào footer */
+            background-color: #4a6b8c;
         }
 
         /* Loại bỏ viền của các input và button trong form */
         input, button {
-            border: none; /* Loại bỏ viền */
+            border: none;
         }
 
         input:focus, button:focus {
-            outline: none; /* Loại bỏ outline khi focus vào input hoặc button */
+            outline: none;
         }
 
         /* Loại bỏ viền của các thẻ a khi ở trạng thái focus */
@@ -122,9 +121,9 @@
 
         /* Thu nhỏ ảnh để vừa khung */
         .product-img {
-            width: 70%; /* Đảm bảo ảnh chiếm hết chiều rộng của khung */
-            height: auto; /* Tự động điều chỉnh chiều cao dựa trên tỷ lệ của ảnh */
-            object-fit: cover; /* Đảm bảo ảnh được cắt để lấp đầy khung mà không bị kéo dãn */
+            width: 70%;
+            height: auto;
+            object-fit: cover;
         }
 
     </style>

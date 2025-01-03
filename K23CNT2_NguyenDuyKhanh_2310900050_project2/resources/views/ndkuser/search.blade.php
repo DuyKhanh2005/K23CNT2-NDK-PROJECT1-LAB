@@ -1,14 +1,20 @@
 @extends('_layouts.frontend.user')
 
-@section('title', 'Trang Chủ')
+@section('title', 'Tìm Kiếm Sản Phẩm')
 
 @section('content-body')
     <div class="container mx-auto mt-6 px-4">
+        <!-- Form Tìm Kiếm -->
+        <form action="{{ route('ndkuser.search') }}" method="GET" class="mb-6">
+            <input type="text" name="search" placeholder="Tìm kiếm sản phẩm..." value="{{ request()->input('search') }}" class="p-2 border rounded">
+            <button type="submit" class="bg-blue-500 text-white py-2 px-4 rounded-md">Tìm Kiếm</button>
+        </form>
+
         @if(isset($products) && $products->count() > 0)
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
                 @foreach($products as $sanpham)
                     <div class="bg-white shadow-lg rounded-lg overflow-hidden transform transition-all hover:scale-105 hover:shadow-xl">
-                        <!-- Image -->
+                        <!-- Hình ảnh sản phẩm -->
                         <img src="{{ asset('storage/' . $sanpham->ndkHinhAnh) }}" class="w-full h-56 object-cover" alt="{{ $sanpham->ndkTenSanPham }}">
 
                         <div class="p-4">
@@ -17,14 +23,14 @@
                             <p class="text-sm text-gray-600 mt-2"><small>Số lượng còn lại: {{ $sanpham->ndkSoLuong }}</small></p>
 
                             <div class="mt-4">
-                                <!-- Xem chi tiết (on the first row) -->
+                                <!-- Xem chi tiết -->
                                 <div class="mb-2">
-                                    <a href="{{ route('ndkuser.show', $sanpham->id) }}"style="text-align:center" class="bg-blue-500 text-white py-2 px-4 rounded-md text-sm hover:bg-blue-600 transition duration-300 w-full block">
+                                    <a href="{{ route('ndkuser.show', $sanpham->id) }}" class="bg-blue-500 text-white py-2 px-4 rounded-md text-sm hover:bg-blue-600 transition duration-300 w-full block">
                                         Xem Chi Tiết
                                     </a>
                                 </div>
-                                
-                                <!-- Mua and Thêm vào giỏ hàng (on the second row) -->
+
+                                <!-- Mua và Thêm vào giỏ hàng -->
                                 <div class="flex gap-4">
                                     <!-- Mua -->
                                     <a href="javascript:void(0);"   
@@ -33,7 +39,7 @@
                                        title="Mua">
                                         <i class="fa fa-shopping-cart"></i> Mua
                                     </a>
-                            
+
                                     <!-- Thêm vào giỏ hàng -->
                                     <button type="button" class="bg-yellow-500 text-white py-2 px-4 rounded-md text-sm hover:bg-yellow-600 transition duration-300 add-to-cart-btn" 
                                             data-id="{{ $sanpham->id }}" data-name="{{ $sanpham->ndkTenSanPham }}">
@@ -41,13 +47,12 @@
                                     </button>
                                 </div>
                             </div>
-                            
                         </div>
                     </div>
                 @endforeach
             </div>
 
-            <!-- Pagination Links -->
+            <!-- Pagination -->
             <div class="mt-6 text-center">
                 {{ $products->links() }}
             </div>
@@ -59,14 +64,8 @@
     </div>
 @endsection
 
-<!-- Additional Styling for the Product Cards -->
+<!-- Custom Styles -->
 <style>
-    .product-img {
-        width: 100%;
-        height: 300px;
-        object-fit: cover;
-    }
-
     .add-to-cart-btn {
         background-color: #ff9800;
         color: white;
@@ -94,7 +93,7 @@
         background-color: #f4f4f4;
         border-radius: 5px;
         color: #333;
-        text-decoration: none;  
+        text-decoration: none;
         transition: background-color 0.3s;
     }
 

@@ -9,42 +9,64 @@ use Illuminate\Support\Facades\Storage;
 
 class ndk_SAN_PHAMController extends Controller
 {
-    // search
-    public function search(Request $request)
-    {
-        $search = $request->input('search');
-        $products = $search
-            ? ndk_SAN_PHAM::where('ndkTenSanPham', 'like', '%' . $search . '%')->paginate(10)
-            : ndk_SAN_PHAM::paginate(10);
+    
+     // In your controller
+     public function search(Request $request)
+     {
+         // Lấy từ khóa tìm kiếm từ input của người dùng
+         $search = $request->input('search');
+     
+         // Nếu có từ khóa tìm kiếm, lọc sản phẩm theo tên
+         if ($search) {
+             // Sử dụng where để lọc các sản phẩm có tên giống hoặc chứa từ khóa tìm kiếm
+             $products = ndk_SAN_PHAM::where('ndkTenSanPham', 'like', '%' . $search . '%')->paginate(10);
+         } else {
+             // Nếu không có từ khóa tìm kiếm, hiển thị tất cả sản phẩm
+             $products = ndk_SAN_PHAM::paginate(10);
+         }  
+     
+         // Trả về view với danh sách sản phẩm và từ khóa tìm kiếm   
+         return view('ndkuser.search', compact('products', 'search'));
+     }
 
-        return view('ndkuser.search', compact('products', 'search'));
-    }
 
-    // search 1
     public function search1(Request $request)
     {
+        // Lấy từ khóa tìm kiếm từ input của người dùng
         $search = $request->input('search');
-        $products = $search
-            ? ndk_SAN_PHAM::where('ndkTenSanPham', 'like', '%' . $search . '%')->paginate(10)
-            : ndk_SAN_PHAM::paginate(10);
-
+    
+        // Nếu có từ khóa tìm kiếm, lọc sản phẩm theo tên
+        if ($search) {
+            // Sử dụng where để lọc các sản phẩm có tên giống hoặc chứa từ khóa tìm kiếm
+            $products = ndk_SAN_PHAM::where('ndkTenSanPham', 'like', '%' . $search . '%')->paginate(10);
+        } else {
+            // Nếu không có từ khóa tìm kiếm, hiển thị tất cả sản phẩm
+            $products = ndk_SAN_PHAM::paginate(10);
+        }
+    
+        // Trả về view với danh sách sản phẩm và từ khóa tìm kiếm   
         return view('ndkuser.search1', compact('products', 'search'));
     }
 
-    // search Admin
-        public function searchAdmins(Request $request)
+
+    // search sap pham admin
+    public function searchAdmins(Request $request)
     {
-        $search = $request->input('search');  // Lấy từ khóa tìm kiếm
-
-        // Kiểm tra nếu có từ khóa tìm kiếm, nếu có sẽ lọc theo tên sản phẩm, nếu không thì hiển thị tất cả sản phẩm
-        $products = $search
-            ? ndk_SAN_PHAM::where('ndkTenSanPham', 'like', '%' . $search . '%')->paginate(10)
-            : ndk_SAN_PHAM::paginate(10);  // Hiển thị tất cả sản phẩm nếu không có từ khóa tìm kiếm
-
-        // Trả về view với các sản phẩm và từ khóa tìm kiếm (để hiển thị lại từ khóa tìm kiếm trên trang)
-        return view('ndkAdmins.ndksanpham.ndk-search', compact('products', 'search'));
+        // Lấy từ khóa tìm kiếm từ input của người dùng
+        $search = $request->input('search');
+    
+        // Nếu có từ khóa tìm kiếm, lọc sản phẩm theo tên
+        if ($search) {
+            // Sử dụng where để lọc các sản phẩm có tên giống hoặc chứa từ khóa tìm kiếm
+            $products = ndk_SAN_PHAM::where('ndkTenSanPham', 'like', '%' . $search . '%')->paginate(10);
+        } else {
+            // Nếu không có từ khóa tìm kiếm, hiển thị tất cả sản phẩm
+            $products = ndk_SAN_PHAM::paginate(10);
+        }
+    
+        // Trả về view với danh sách sản phẩm và từ khóa tìm kiếm   
+        return view('ndkAdmins.ndkuser.ndk-search', compact('products', 'search'));
     }
-
     // List sản phẩm
     public function ndkList()
     {

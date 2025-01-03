@@ -10,10 +10,10 @@
     <style>
         /* Header styling */
         header {
-            background: linear-gradient(90deg,  #7e2914, #be6d6d); /* Gradient background */
+            background: linear-gradient(90deg, #4a6b8c, #414141); /* Gradient màu xanh dịu và màu đỏ */
             color: white;
             padding: 10px 0;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Shadow for modern look */
+            box-shadow: 0 4px 6px rgba(179, 177, 177, 0.082); /* Shadow for modern look */
         }
 
         /* Logo styling */
@@ -31,7 +31,7 @@
         }
 
         .nav-link:hover {
-            color: #ffc107; /* Highlight color */
+            color: #ffcd39; /* Highlight màu vàng nhạt */
         }
 
         /* Search form */
@@ -41,13 +41,13 @@
 
         .search-form .btn {
             border-radius: 0 20px 20px 0;
-            background-color: #ffc107;
+            background-color: #ffcd39; /* Màu vàng nhạt */
             color: #343a40;
             border: none;
         }
 
         .search-form .btn:hover {
-            background-color: #ffcd39;
+            background-color: #ffc107; /* Màu vàng đậm khi hover */
         }
 
         /* Account section */
@@ -64,7 +64,7 @@
         }
 
         .account-info a:hover {
-            color: #ffc107;
+            color: #6b6657; /* Highlight màu vàng nhạt khi hover */
         }
     </style>
 </head>
@@ -74,17 +74,16 @@
         <!-- Logo -->
         <div class="logo">
             <a href="/ndk-admins">
-                <img src="{{ asset('storage/img/san_pham/Logo-S.jpg') }}" alt="Logo">
+                <img src="{{ asset('storage/img/san_pham/Logo.png') }}" alt="Logo">
             </a>
         </div>
 
         <!-- Navigation -->
         <nav class="d-flex align-items-center">
-            <a href="/ndk-admins" class="nav-link">Trang chủ</a> <!-- Trang chủ -->
-            <a href="/ndk-admins/ndkdanhsachquantri/ndksanpham" class="nav-link">Sản phẩm</a> <!-- Quản lý sản phẩm -->
-            <a href="/ndk-admins/ndk-khach-hang" class="nav-link">Liên hệ</a> <!-- Trang liên hệ -->
+            <a href="/ndk-admins" class="nav-link">Trang chủ</a>
+            <a href="/ndk-admins/ndkdanhsachquantri/ndksanpham" class="nav-link">Sản phẩm</a>
+            <a href="/ndk-admins/ndk-khach-hang" class="nav-link">Liên hệ</a>
         </nav>
-
 
         <!-- Search Form -->
         <form action="{{ route('ndkuser.searchAdmins') }}" method="GET" class="search-form d-flex">

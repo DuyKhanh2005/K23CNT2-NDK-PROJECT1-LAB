@@ -15,22 +15,22 @@ class ndk_LOAI_SAN_PHAMTableSeeder extends Seeder
         //
         DB::table('ndk_LOAI_SAN_PHAM')->insert([
             'ndkMaLoai'=>'L001',
-            'ndkTenLoai'=>'Điện Thoại Gaming',
+            'ndkTenLoai'=>'Phím Văn Phòng',
             'ndkTrangThai'=>0
         ]);
         DB::table('ndk_LOAI_SAN_PHAM')->insert([
             'ndkMaLoai'=>'L002',
-            'ndkTenLoai'=>'Điện Thoại Đi Làm',
+            'ndkTenLoai'=>'Phím Custom',
             'ndkTrangThai'=>0
         ]);
         DB::table('ndk_LOAI_SAN_PHAM')->insert([
             'ndkMaLoai'=>'L003',
-            'ndkTenLoai'=>'Điện Thoại Pin Trâu',
+            'ndkTenLoai'=>'Phím Rapid',
             'ndkTrangThai'=>0
         ]);
         DB::table('ndk_LOAI_SAN_PHAM')->insert([
             'ndkMaLoai'=>'L004',
-            'ndkTenLoai'=>'Điện Thoại Luxury',
+            'ndkTenLoai'=>'Number Pad',
             'ndkTrangThai'=>0 
         ]);
     }

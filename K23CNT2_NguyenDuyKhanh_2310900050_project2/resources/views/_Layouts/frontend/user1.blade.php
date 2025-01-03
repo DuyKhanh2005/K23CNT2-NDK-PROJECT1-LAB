@@ -12,8 +12,9 @@
     <style>
         /* Custom styles */
         body {
-            background: #f4f4f4;
+            background: #f7f7f7; /* Light background for better contrast */
             margin: 0;
+            font-family: 'Arial', sans-serif;
         }
 
         /* Main content wrapper styles */
@@ -21,6 +22,9 @@
             width: 100%;
             background: #fff;
             min-height: 100vh;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Box shadow to create a floating effect */
+            border-radius: 10px;
+            overflow: hidden;
         }
 
         /* Content body */
@@ -32,16 +36,19 @@
         header {
             background: #007bff;
             color: white;
-            padding: 10px 20px;
-            font-size: 1.5em;
+            padding: 15px 20px;
+            font-size: 1.8em;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
 
         /* Footer styles */
         footer {
             background: #007bff;
             color: white;
-            padding: 10px 0;
+            padding: 15px 20px;
             text-align: center;
+            margin-top: 40px;
         }
 
         /* Navbar customization */
@@ -69,6 +76,33 @@
         .container-fluid .content-wrapper {
             padding: 20px;
         }
+
+        /* Button customization */
+        .btn-custom {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-custom:hover {
+            background-color: #0056b3;
+        }
+
+        /* Form input styles */
+        .form-control {
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            box-shadow: none;
+        }
+
+        .form-control:focus {
+            border-color: #007bff;
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+        }
+
     </style>
 </head>
 
@@ -78,11 +112,9 @@
     <header>
         @include('_layouts.frontend._headerTitle') <!-- Title for frontend when not logged in -->
     </header>
-    <hr style="border: 2px solid black">
 
     <!-- Navbar (Main Navigation Menu) -->
     @include('_layouts.frontend._menu') <!-- Menu navigation (with toggle functionality) -->
-    <hr style="border: 2px solid black">
 
     <!-- Main Content Section -->
     <div class="container-fluid">

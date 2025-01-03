@@ -22,6 +22,9 @@ use App\Http\Controllers\ndk_QUAN_TRIController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
+Route::get('/ndk-admins/search-admins', [ndk_SAN_PHAMController::class, 'searchAdmins'])->name('ndkuser.searchAdmins');
+
 //HomeController
 Route::get('/ndk-admins', [ndk_QUAN_TRIController::class, 'ndkAdminHome']);
 
@@ -66,9 +69,12 @@ Route::get('/ndk-admins/ndk-loai-san-pham/ndk-delete/{id}',[ndk_LOAI_SAN_PHAMCon
 
 // san pham--------------------------------------------------------------------------------------------------------------------------------------
 // search
-Route::get('/ndk-admins/ndk-san-pham/search', [ndk_SAN_PHAMController::class, 'searchAdmins'])->name('ndkuser.searchAdmins');
-// list
+Route::get('/search', [ndk_SAN_PHAMController::class, 'search'])->name('ndkuser.search');
+Route::post('/add-to-cart/{productId}', [CartController::class, 'addToCart']); // Giả sử bạn có controller CartController để xử lý giỏ hàng
 
+
+
+// list
 Route::get('/ndk-admins/ndk-san-pham',[ndk_SAN_PHAMController::class,'ndkList'])->name('ndkadims.ndksanpham');
 //create
 Route::get('/ndk-admins/ndk-san-pham/ndk-create',[ndk_SAN_PHAMController::class,'ndkCreate'])->name('ndkadmin.ndksanpham.ndkcreate');

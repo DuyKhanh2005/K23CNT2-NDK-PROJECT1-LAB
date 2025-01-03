@@ -15,186 +15,112 @@ class ndk_SAN_PHAMTableSeeder extends Seeder
         $products = [
             [
                 'ndkMaSanPham' => 'SS001',
-                'ndkTenSanPham' => 'Asus ROG Phone 5',
-                'ndkHinhAnh' => asset('img/san_pham/Asus-ROG-Phone-5.jpg'),
+                'ndkTenSanPham' => ' Crush 80',
+                'ndkHinhAnh' => asset('img/san_pham/Crush-80.webp'),
                 'ndkSoLuong' => 23,
-                'ndkDonGia' => 16990000,
+                'ndkDonGia' => 2350000,
                 'ndkMaLoai' => 2,
-                'ndkMoTa' => 'Asus ROG Phone 5
+                'ndkMoTa' => 'Bàn phím cơ Crush 80 là dòng TKL (80%) nhỏ gọn, phù hợp cho cả làm việc và chơi game.
 
-                    Màn hình: 6.78 inch AMOLED, độ phân giải Full HD+ (2448 x 1080), 144Hz, 300Hz cảm ứng
-                    Chipset: Qualcomm Snapdragon 888, GPU Adreno 660
-                    
-                    RAM: Tùy chọn 8GB, 12GB, 16GB
-                    
-                    Bộ nhớ trong: 128GB, 256GB (UFS 3.1, không hỗ trợ thẻ nhớ microSD)
-                    
-                    Camera: Camera chính 64MP, camera siêu rộng 13MP, camera macro 5MP
-                    
-                    Pin: 6000mAh, sạc nhanh 65W
-                    
-                    Thiết kế: Khung nhựa cao cấp, mặt lưng nhựa với đèn LED RGB ROG
-                    
-                    Kết nối: 5G, Wi-Fi 6E, Bluetooth 5.2, USB-C
-                    
-                    Hệ điều hành: Android 11, ROG UI
-                    
-                    Tính năng nổi bật: Hệ thống làm mát GameCool 5, nút cảm ứng AirTrigger, loa stereo, màn hình AMOLED 144Hz, hỗ trợ sạc nhanh 65W
-                    
-                    Asus ROG Phone 5 là một trong những điện thoại chơi game mạnh mẽ, sở hữu phần cứng xuất sắc và các tính năng chuyên biệt cho game thủ, từ hiệu suất đến khả năng làm mát và âm thanh chất lượng cao.',
+                    Switch hot-swap: Linh hoạt thay đổi, hỗ trợ nhiều loại switch.
+                    Keycap PBT Dye-sub: Bền bỉ, chống bóng.
+                    LED RGB đa vùng: Hiệu ứng ánh sáng tùy chỉnh đẹp mắt.
+                    Kết nối USB-C: Tốc độ truyền tải nhanh, ổn định.
+                    Thiết kế cao cấp, hiệu năng vượt trội, Crush 80 là lựa chọn hoàn hảo cho người dùng yêu thích sự gọn nhẹ và tiện lợi.',
                 'ndkTrangThai' => 0,
             ],
             [
                 'ndkMaSanPham' => 'IP001',
-                'ndkTenSanPham' => 'Iphone 15 Pro',
-                'ndkHinhAnh' => asset('img/san_pham/Iphone-15-Pro.jpg'),
-                'ndkSoLuong' => 99,
-                'ndkDonGia' => 28590000,
+                'ndkTenSanPham' => 'FuryCube-F75',
+                'ndkHinhAnh' => asset('img/san_pham/FuryCube-F75.webp'),
+                'ndkSoLuong' => 23,
+                'ndkDonGia' => 1650000,
                 'ndkMaLoai' => 1,
-                'ndkMoTa' => 'iPhone 15 Pro 256GB
+                'ndkMoTa' => 'Bàn phím cơ Fury Cube F75 nổi bật với:
 
-                    Màn hình: 6.1 inch Super Retina XDR OLED, hỗ trợ ProMotion (120Hz)
-                    
-                    Chipset: Apple A17 Pro, hiệu suất mạnh mẽ, tiết kiệm năng lượng
-                    
-                    Camera: Camera chính 48MP, camera telephoto 3x, camera siêu rộng 12MP
-                    
-                    Bộ nhớ: 256GB, không hỗ trợ thẻ nhớ ngoài
-                    
-                    Thiết kế: Khung titan siêu nhẹ, mặt lưng kính mờ
-                    
-                    Pin: Thời gian sử dụng lên đến 23 giờ xem video
-                    
-                    Kết nối: USB-C, 5G, Wi-Fi 6E
-                    
-                    Hệ điều hành: iOS 17
-                    
-                    Tính năng nổi bật: Dynamic Island, MagSafe, tính năng AI và AR mạnh mẽ
-                    
-                    Một chiếc điện thoại cao cấp với hiệu suất tuyệt vời, camera sắc nét và thiết kế sang trọng.',
+Kích thước 75%: Nhỏ gọn, tiện lợi nhưng vẫn đầy đủ phím chức năng.
+Switch cao cấp: Lựa chọn Gateron, Cherry MX hoặc TTC, tuổi thọ lên đến 50 triệu lần nhấn.
+Keycap PBT Double-shot: Bền bỉ, chống mài mòn, mang lại cảm giác gõ tốt hơn.
+LED RGB tùy chỉnh: Nhiều hiệu ứng ánh sáng rực rỡ, phù hợp cho cả làm việc và chơi game.
+Kết nối linh hoạt: Hỗ trợ cả có dây (USB-C) và không dây (Bluetooth 5.0), đảm bảo độ ổn định cao.
+Chế độ NKRO: Nhấn đồng thời nhiều phím mà không lo xung đột.
+Đây là bàn phím dành cho những ai yêu thích sự gọn nhẹ, hiệu năng cao, và thẩm mỹ hiện đại.',
                 'ndkTrangThai' => 0,
             ],
             [
                 'ndkMaSanPham' => 'HW001',
-                'ndkTenSanPham' => 'SamSung Galaxy S23 Ultra',
-                'ndkHinhAnh' => asset('img/san_pham/Samsung-S23_Ultra.jpg'),
+                'ndkTenSanPham' => 'Lucky65-V2',
+                'ndkHinhAnh' => asset('img/san_pham/Lucky65-V2.webp'),
                 'ndkSoLuong' => 150,
-                'ndkDonGia' => 22490000,
+                'ndkDonGia' => 950000,
                 'ndkMaLoai' => 3,
-                'ndkMoTa' => 'Samsung Galaxy S23 Ultra
+                'ndkMoTa' => 'Bàn phím cơ Lucky65 V2 là sự kết hợp hoàn hảo giữa thiết kế nhỏ gọn và hiệu năng mạnh mẽ, mang đến trải nghiệm gõ phím tuyệt vời.
 
-                    
-                    Màn hình: 6.8 inch Dynamic AMOLED 2X, độ phân giải 3088 x 1440, 120Hz, hỗ trợ HDR10+
-                    
-                    Chipset: Qualcomm Snapdragon 8 Gen 2, hiệu năng mạnh mẽ và tiết kiệm năng lượng
-                    
-                    Camera: Camera chính 200MP, camera siêu rộng 12MP, 2 camera telephoto 10MP (3x và 10x zoom quang học)
-                    
-                    Bộ nhớ: 12GB RAM, các tùy chọn bộ nhớ trong 256GB, 512GB, 1TB
-                    
-                    Pin: 5000mAh, sạc nhanh 45W, sạc không dây 15W
-                    
-                    Thiết kế: Khung kim loại, mặt lưng kính Gorilla Glass Victus 2
-                    
-                    Kết nối: 5G, Wi-Fi 6E, Bluetooth 5.3, USB-C
-                    
-                    Hệ điều hành: Android 13, One UI 5.1
-                    
-                    Tính năng nổi bật: S Pen tích hợp, camera 200MP với khả năng zoom mạnh mẽ, chế độ chụp đêm, màn hình siêu mượt với tốc độ làm mới 120Hz
-                    
-                    Galaxy S23 Ultra là lựa chọn cao cấp với camera ấn tượng và khả năng xử lý mạnh mẽ, phù hợp cho những ai đam mê công nghệ và nhiếp ảnh.',
+Đặc điểm nổi bật
+Layout 65%: Tinh giản, tiết kiệm không gian nhưng vẫn giữ đầy đủ phím chức năng cần thiết.
+Switch hot-swap: Thay đổi switch dễ dàng, tương thích nhiều loại switch khác nhau.
+Keycap PBT Double-shot: Bền, chống bóng và mang lại cảm giác gõ chắc tay.
+LED RGB: Ánh sáng rực rỡ với nhiều hiệu ứng tùy chỉnh, làm nổi bật góc làm việc hoặc chơi game.
+Kết nối linh hoạt: Hỗ trợ cả USB-C và không dây Bluetooth 5.0, đảm bảo kết nối ổn định và nhanh chóng.
+Vỏ nhôm CNC: Cao cấp, bền bỉ và mang lại cảm giác sang trọng.
+Lucky65 V2 là lựa chọn lý tưởng cho những ai yêu thích sự gọn nhẹ mà vẫn đòi hỏi chất lượng và hiệu suất vượt trội.',
                 'ndkTrangThai' => 0,
             ],
             [
                 'ndkMaSanPham' => 'IP002',
-                'ndkTenSanPham' => 'Điện Thoại Iphone 15 Pro',
-                'ndkHinhAnh' => asset('img/san_pham/Iphone-15-Pro.jpg'),
-                'ndkSoLuong' => 99,
-                'ndkDonGia' => 28590000,
+                'ndkTenSanPham' => 'Rainy-75',
+                'ndkHinhAnh' => asset('img/san_pham/Rainy75.webp'),
+                'ndkSoLuong' => 2,
+                'ndkDonGia' => 1899000,
                 'ndkMaLoai' => 1,
-                'ndkMoTa' => 'iPhone 15 Pro 256GB
+                'ndkMoTa' => 'Bàn phím cơ Rainy75 là lựa chọn hoàn hảo cho người dùng yêu thích sự cân bằng giữa thiết kế tinh tế và hiệu năng mạnh mẽ.
 
-                    Màn hình: 6.1 inch Super Retina XDR OLED, hỗ trợ ProMotion (120Hz)
-                    
-                    Chipset: Apple A17 Pro, hiệu suất mạnh mẽ, tiết kiệm năng lượng
-                    
-                    Camera: Camera chính 48MP, camera telephoto 3x, camera siêu rộng 12MP
-                    
-                    Bộ nhớ: 256GB, không hỗ trợ thẻ nhớ ngoài
-                    
-                    Thiết kế: Khung titan siêu nhẹ, mặt lưng kính mờ
-                    
-                    Pin: Thời gian sử dụng lên đến 23 giờ xem video
-                    
-                    Kết nối: USB-C, 5G, Wi-Fi 6E
-                    
-                    Hệ điều hành: iOS 17
-                    
-                    Tính năng nổi bật: Dynamic Island, MagSafe, tính năng AI và AR mạnh mẽ
-                    
-                    Một chiếc điện thoại cao cấp với hiệu suất tuyệt vời, camera sắc nét và thiết kế sang trọng.',
+Đặc điểm nổi bật
+Layout 75%: Đầy đủ phím chức năng với thiết kế gọn gàng, tối ưu không gian.
+Switch cao cấp: Tuỳ chọn các loại switch nổi tiếng như Gateron, Kailh, hoặc Cherry MX, đảm bảo cảm giác gõ mượt mà và độ bền cao.
+Keycap PBT Double-shot: Bền bỉ, không phai màu, mang lại cảm giác gõ thoải mái.
+Đèn LED RGB: Hiệu ứng ánh sáng đẹp mắt, dễ dàng tùy chỉnh để phù hợp phong cách cá nhân.
+Vỏ nhôm CNC hoặc nhựa ABS cao cấp: Đem lại sự chắc chắn và vẻ ngoài hiện đại.
+Kết nối USB-C: Tốc độ phản hồi nhanh và ổn định.
+Rainy75 là sự lựa chọn lý tưởng cho cả game thủ lẫn dân văn phòng, kết hợp hoàn hảo giữa tính năng và thẩm mỹ.',
                 'ndkTrangThai' => 0,
             ],
             [
                 'ndkMaSanPham' => 'SS002',
-                'ndkTenSanPham' => 'Asus ROG Phone 5',
-                'ndkHinhAnh' => asset('img/san_pham/Asus-ROG-Phone-5.jpg'),
-                'ndkSoLuong' => 23,
-                'ndkDonGia' => 16990000,
+                'ndkTenSanPham' => 'Star-80',
+                'ndkHinhAnh' => asset('img/san_pham/Star80.webp'),
+                'ndkSoLuong' => 19,
+                'ndkDonGia' => 1750000,
                 'ndkMaLoai' => 2,
-                'ndkMoTa' => 'Asus ROG Phone 5
+                'ndkMoTa' => 'Bàn phím cơ Star80 là sự lựa chọn tuyệt vời cho người dùng tìm kiếm sự cân bằng giữa hiệu năng mạnh mẽ và thiết kế tinh tế.
 
-                    Màn hình: 6.78 inch AMOLED, độ phân giải Full HD+ (2448 x 1080), 144Hz, 300Hz cảm ứng
-                    
-                    Chipset: Qualcomm Snapdragon 888, GPU Adreno 660
-                    
-                    RAM: Tùy chọn 8GB, 12GB, 16GB
-                    
-                    Bộ nhớ trong: 128GB, 256GB (UFS 3.1, không hỗ trợ thẻ nhớ microSD)
-                    
-                    Camera: Camera chính 64MP, camera siêu rộng 13MP, camera macro 5MP
-                    
-                    Pin: 6000mAh, sạc nhanh 65W
-                    
-                    Thiết kế: Khung nhựa cao cấp, mặt lưng nhựa với đèn LED RGB ROG
-                    
-                    Kết nối: 5G, Wi-Fi 6E, Bluetooth 5.2, USB-C
-                    
-                    Hệ điều hành: Android 11, ROG UI
-                    
-                    Tính năng nổi bật: Hệ thống làm mát GameCool 5, nút cảm ứng AirTrigger, loa stereo, màn hình AMOLED 144Hz, hỗ trợ sạc nhanh 65W
-                    
-                    Asus ROG Phone 5 là một trong những điện thoại chơi game mạnh mẽ, sở hữu phần cứng xuất sắc và các tính năng chuyên biệt cho game thủ, từ hiệu suất đến khả năng làm mát và âm thanh chất lượng cao.',
+Đặc điểm nổi bật
+Layout 80% (TKL): Giữ đầy đủ phím chức năng cần thiết, tiết kiệm không gian nhưng không làm mất đi sự tiện lợi.
+Switch cao cấp: Hỗ trợ nhiều loại switch như Gateron, Cherry MX, hoặc Kailh, mang lại cảm giác gõ mượt mà và độ bền lên đến 50 triệu lần nhấn.
+Keycap PBT Double-shot: Chống mài mòn, bền bỉ, mang lại trải nghiệm gõ tuyệt vời.
+Đèn LED RGB đa vùng: Nhiều hiệu ứng ánh sáng tùy chỉnh, làm nổi bật góc làm việc hoặc chơi game.
+Chất liệu cao cấp: Vỏ nhôm CNC hoặc nhựa ABS chất lượng cao, đảm bảo độ bền và thẩm mỹ.
+Kết nối USB-C: Đảm bảo tốc độ truyền tín hiệu nhanh và ổn định.
+Star80 là lựa chọn hoàn hảo cho cả công việc lẫn giải trí, đáp ứng nhu cầu thẩm mỹ và hiệu năng của người dùng.',
                 'ndkTrangThai' => 0,
             ],
             [
                 'ndkMaSanPham' => 'HW002',
-                'ndkTenSanPham' => 'SamSung Galaxy S23 Ultra',
-                'ndkHinhAnh' => asset('img/san_pham/Samsung-S23_Ultra.jpg'),
+                'ndkTenSanPham' => 'VMO-Wave75',
+                'ndkHinhAnh' => asset('img/san_pham/VMO-Wave75.webp'),
                 'ndkSoLuong' => 150,
-                'ndkDonGia' => 22490000,
+                'ndkDonGia' => 1990000,
                 'ndkMaLoai' => 3,
-                'ndkMoTa' => 'Samsung Galaxy S23 Ultra
+                'ndkMoTa' => 'Bàn phím cơ Wave75 mang đến sự kết hợp giữa thiết kế hiện đại và hiệu suất mạnh mẽ, phù hợp cho cả công việc và chơi game.
 
-                    Màn hình: 6.8 inch Dynamic AMOLED 2X, độ phân giải 3088 x 1440, 120Hz, hỗ trợ HDR10+
-                    
-                    Chipset: Qualcomm Snapdragon 8 Gen 2, hiệu năng mạnh mẽ và tiết kiệm năng lượng
-                    
-                    Camera: Camera chính 200MP, camera siêu rộng 12MP, 2 camera telephoto 10MP (3x và 10x zoom quang học)
-                    
-                    Bộ nhớ: 12GB RAM, các tùy chọn bộ nhớ trong 256GB, 512GB, 1TB
-                    
-                    Pin: 5000mAh, sạc nhanh 45W, sạc không dây 15W
-                    
-                    Thiết kế: Khung kim loại, mặt lưng kính Gorilla Glass Victus 2
-                    
-                    Kết nối: 5G, Wi-Fi 6E, Bluetooth 5.3, USB-C
-                    
-                    Hệ điều hành: Android 13, One UI 5.1
-                    
-                    Tính năng nổi bật: S Pen tích hợp, camera 200MP với khả năng zoom mạnh mẽ, chế độ chụp đêm, màn hình siêu mượt với tốc độ làm mới 120Hz
-                    
-                    Galaxy S23 Ultra là lựa chọn cao cấp với camera ấn tượng và khả năng xử lý mạnh mẽ, phù hợp cho những ai đam mê công nghệ và nhiếp ảnh.',
+Đặc điểm nổi bật
+Layout 75%: Gọn gàng, tiết kiệm không gian nhưng vẫn giữ đầy đủ phím chức năng cần thiết.
+Switch hot-swap: Dễ dàng thay thế switch, hỗ trợ đa dạng các loại switch như Gateron, Cherry MX, hoặc Kailh.
+Keycap PBT Double-shot: Chống bóng, bền bỉ, mang lại cảm giác gõ thoải mái và chắc chắn.
+LED RGB sống động: Hiệu ứng ánh sáng tùy chỉnh, làm nổi bật bàn phím trong mọi môi trường.
+Chất liệu cao cấp: Vỏ nhôm CNC hoặc nhựa ABS, kết cấu chắc chắn, mang lại vẻ ngoài sang trọng.
+Kết nối linh hoạt: Hỗ trợ USB-C và Bluetooth 5.0, đảm bảo độ ổn định cao và dễ dàng sử dụng.
+Wave75 là lựa chọn lý tưởng cho những ai muốn sở hữu một chiếc bàn phím đẹp mắt, bền bỉ và hiệu năng vượt trội.',
                 'ndkTrangThai' => 0,
             ],
         ];
